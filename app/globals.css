@@ -1,0 +1,1250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(237, 238, 240);
+  color: #333;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-card {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 1px 2px;
+  }
+
+  /* Subtle glow effect for interactive elements */
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .dark .hover-glow:hover {
+    box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  /* Base heading styles that apply to all heading classes */
+  .heading-base {
+    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-emoji: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-variation-settings: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.2px;
+    letter-spacing: -0.01em;
+  }
+
+  .dark .heading-base {
+    text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.7);
+    -webkit-text-stroke: 0.2px;
+  }
+
+  /* Specific heading sizes */
+  .heading-1 {
+    @apply heading-base;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .heading-2 {
+    @apply heading-base;
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .heading-3 {
+    @apply heading-base;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .heading-4 {
+    @apply heading-base;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .heading-5 {
+    @apply heading-base;
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  .heading-6 {
+    @apply heading-base;
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  /* Keep the original card-title for backward compatibility */
+  .card-title {
+    @apply heading-5;
+  }
+
+  .bg-card-custom {
+    background-color: white;
+  }
+
+  /* Update dark mode card background */
+  .dark .bg-card-custom {
+    background-color: #111111; /* Very dark gray matching the reference image */
+  }
+
+  .p-6px {
+    padding: 6px;
+  }
+
+  .btn-primary-gradient {
+    background: #0000ff;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-primary-gradient:hover {
+    background: #0000cc;
+  }
+
+  .dark .btn-primary-gradient {
+    background: #0000ff;
+    transition: background-color 0.2s ease;
+  }
+
+  .dark .btn-primary-gradient:hover {
+    background: #0000cc;
+  }
+
+  /* Update the dark-noise-bg utility classes to use the new approach */
+  .dark-noise-bg {
+    background-color: #0a0a0a; /* Almost black background */
+    position: relative;
+  }
+
+  .dark-noise-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/noise-texture-dark.png");
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    opacity: 0.3;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+
+  .dark-noise-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Subtle variation */
+  .dark-noise-bg-subtle {
+    background-color: #111111; /* Very dark gray matching the reference image */
+    position: relative;
+  }
+
+  .dark-noise-bg-subtle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/noise-texture-dark.png");
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    opacity: 0.2;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+
+  .dark-noise-bg-subtle > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Lighter variation */
+  .dark-noise-bg-lighter {
+    background-color: #1a1a1a; /* Medium dark gray for interactive elements */
+    position: relative;
+  }
+
+  .dark-noise-bg-lighter::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/noise-texture-dark.png");
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    opacity: 0.15;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+
+  .dark-noise-bg-lighter > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Special class for popup menus with very subtle noise - ONLY IN DARK MODE */
+  .dark .popup-menu-bg {
+    background-color: #111111; /* Very dark gray matching the reference image */
+    position: relative;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  }
+
+  .dark .popup-menu-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/noise-texture-dark.png");
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    opacity: 0.1; /* Very subtle noise for popup menus */
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+
+  .dark .popup-menu-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Game Modal Styles */
+  .game-modal {
+    z-index: 9999;
+  }
+
+  .game-modal-close {
+    z-index: 10000;
+  }
+
+  /* CRT TV Effect - Exact from CodePen */
+  @font-face {
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/terminal_copy.ttf);
+    font-family: 'Terminal';
+  }
+  @font-face {
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf) format('truetype');
+    font-family: 'Sys';
+  }
+
+  /* Background when TV is off */
+  .screen::before {
+    background: transparent linear-gradient(to bottom, #85908c 0%, #323431 100%) repeat scroll 0 0;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  /* CRT scanlines */
+  .scanlines .overlay {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scanlines .overlay::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/crt.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    content: "";
+  }
+
+  .scanlines .overlay::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: " ";
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+      );
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .picture {
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    z-index: -1;
+    transform: scale(0, 0);
+    background: transparent linear-gradient(to bottom, #85908c 0%, #323431 100%) repeat scroll 0 0;
+  }
+
+  .menu {
+    opacity: 0;
+    background-color: #0069ff;
+    box-sizing: border-box;
+    font-family: "Sys";
+    font-size: clamp(24px, 4vw, 40px);
+    height: auto;
+    text-transform: uppercase;
+    width: clamp(300px, 85%, 600px);
+    max-width: 95vw;
+    text-shadow: 1px 1px 0 #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    filter: blur(1px);
+    color: #fff;
+    animation: jerkup 100ms infinite;
+    text-align: center;
+  }
+
+  .menu header {
+    color: #e7e05c;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    animation: 5s ease 2000ms normal none infinite running glitch;
+    text-align: center;
+    border-bottom: 2px solid #e7e05c;
+    font-size: clamp(20px, 3.5vw, 32px);
+  }
+
+  .menu ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu ul li {
+    box-sizing: border-box;
+    list-style: outside none none;
+    padding: 3px 10px;
+    text-align: center;
+    font-size: clamp(18px, 3vw, 28px);
+  }
+
+  .menu ul li.active {
+    /* Remove background-color: #1af2ff; */
+  }
+
+  .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .menu ul {
+    animation: 5s ease 2000ms normal none infinite running glitch;
+  }
+
+  .menu footer {
+    background-color: #2afd72;
+    margin-top: 10px;
+    padding: 5px 15px;
+    animation: 5s ease 2000ms normal none infinite running glitch;
+  }
+
+  .menu footer::after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+
+  .menu footer .key {
+    float: left;
+    width: 50%;
+  }
+
+  .menu footer .key span {
+    background-color: #0069ff;
+    border: 6px solid #e7e05c;
+    border-radius: 6px;
+    display: inline-block;
+    height: 34px;
+    line-height: 36px;
+    padding-left: 6px;
+  }
+
+  .menu footer .key:last-child {
+    text-align: right;
+  }
+
+  .menu footer .system-name {
+    text-align: center;
+    width: 100%;
+    font-size: clamp(16px, 3vw, 28px);
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .screen.on .picture {
+    animation: 3000ms linear 0ms normal forwards 1 running on;
+  }
+
+  .screen.off .picture {
+    animation: 750ms cubic-bezier(0.230, 1.000, 0.320, 1.000) 0ms normal forwards 1 running off;
+  }
+
+  .text {
+    color: lime;
+    content: "AV-1";
+    opacity: 0;
+    filter: blur(0.5px);
+    font-family: Sys;
+    font-size: 6vmin;
+    left: 5%;
+    position: absolute;
+    text-shadow: 0 0 3px lime;
+    top: 10%;
+    width: 200px;
+  }
+
+  .screen.on .text, 
+  .screen.on .menu {
+    opacity: 1;
+    transition: opacity 10ms ease 2000ms;
+  }
+
+  @keyframes on {
+    0% {
+      transform: scale(1, 0.8) translate3d(0, 0, 0);
+      filter: brightness(4);
+      opacity: 1;
+    }
+    3.5% {
+      transform: scale(1, 0.8) translate3d(0, 100%, 0);
+    }
+    3.6% {
+      transform: scale(1, 0.8) translate3d(0, -100%, 0);
+      opacity: 1;
+    }
+    9% {
+      transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+      filter: brightness(4);
+      opacity: 0;
+    }
+    11% {
+      transform: scale(1, 1) translate3d(0, 0, 0);
+      filter: contrast(0) brightness(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1, 1) translate3d(0, 0, 0);
+      filter: contrast(1) brightness(1.2) saturate(1.3);
+      opacity: 1;
+    }
+  }
+
+  @keyframes off {
+    0% {
+      transform: scale(1, 1);
+      filter: brightness(1);
+    }
+    40% {
+      transform: scale(1, 0.005);
+      filter: brightness(100);
+    }
+    70% {
+      transform: scale(1, 0.005);
+    }
+    90% {
+      transform: scale(0.005, 0.005);
+    }
+    100% {
+      transform: scale(0, 0);
+    }
+  }
+
+  .text span {
+    filter: blur(1px);
+    position: absolute;
+  }
+
+  .text span:nth-child(1) {
+    color: red;
+    margin-left: -2px;
+    filter: blur(2px);
+  }
+
+  .text span:nth-child(2) {
+    color: lime;
+    margin-left: 2px;
+    filter: blur(2px);
+  }
+
+  .text span:nth-child(3) {
+    color: blue;
+    position: 20px 0;
+    filter: blur(1px);
+  }
+
+  .text span:nth-child(4) {
+    color: #fff;
+    filter: blur(1px);
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+  }
+
+  .text span:nth-child(5) {
+    color: rgba(255, 255, 255, 0.1);
+    filter: blur(15px);
+  }
+
+  .text span {
+    animation: blur 30ms infinite, jerk 50ms infinite;
+  }
+
+  @keyframes blur {
+    0% {
+      filter: blur(1px);
+      opacity: 0.8;
+    }
+    50% {
+      filter: blur(1px);
+      opacity: 1;
+    }
+    100% {
+      filter: blur(1px);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes jerk {
+    50% {
+      transform: translateX(1px);
+    }
+    51% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes jerkup {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .text span:nth-child(2) {
+    animation: jerkup 1s infinite;
+  }
+
+  .text span:nth-child(3) {
+    animation: glitch1 1s infinite;
+  }
+
+  @keyframes glitch1 {
+    0% {
+      transform: translateX(0);
+    }
+    30% {
+      transform: translateX(0);
+    }
+    31% {
+      transform: translateX(0px);
+    }
+    32% {
+      transform: translateX(0);
+    }
+    98% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+  .text span:nth-child(2) {
+    animation: glitch2 1s infinite;
+  }
+
+  @keyframes glitch2 {
+    0% {
+      transform: translateX(0);
+    }
+    30% {
+      transform: translateX(0);
+    }
+    31% {
+      transform: translateX(0px);
+    }
+    32% {
+      transform: translateX(0);
+    }
+    98% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+  .overlay .text {
+    animation: 5s ease 2000ms normal none infinite running glitch;
+  }
+
+  @keyframes glitch {
+    /* Empty glitch animation as in original */
+  }
+
+  /* CRT TV Container */
+  .crt-tv-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+  }
+
+  /* CRT Screen */
+  .crt-screen {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    max-height: 800px;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+      0 0 50px rgba(0, 255, 0, 0.3),
+      inset 0 0 100px rgba(0, 0, 0, 0.8);
+    border: 8px solid #2a2a2a;
+    
+    /* Initial state - TV off */
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease-out;
+  }
+
+  /* CRT Screen On State */
+  .crt-screen.crt-on {
+    opacity: 1;
+    transform: scale(1);
+    animation: crt-turn-on 1s ease-out;
+  }
+
+  /* CRT Turn-on Animation */
+  @keyframes crt-turn-on {
+    0% {
+      transform: scale(0.8) scaleY(0.001);
+      opacity: 0;
+    }
+    20% {
+      transform: scale(0.8) scaleY(0.1);
+      opacity: 0.5;
+    }
+    40% {
+      transform: scale(0.9) scaleY(0.5);
+      opacity: 0.8;
+    }
+    60% {
+      transform: scale(0.95) scaleY(0.8);
+      opacity: 0.9;
+    }
+    80% {
+      transform: scale(1) scaleY(0.95);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  /* CRT Effects Overlay */
+  .crt-effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Scanlines */
+  .crt-effects::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 0, 0, 0.4) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 0.1s linear infinite;
+  }
+
+  /* Screen flicker */
+  .crt-effects::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 16, 16, 0.1);
+    animation: flicker 0.15s infinite;
+    opacity: 0;
+  }
+
+  /* Scanlines animation */
+  @keyframes scanlines {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 4px;
+    }
+  }
+
+  /* Flicker animation */
+  @keyframes flicker {
+    0% { opacity: 0.27; }
+    5% { opacity: 0.34; }
+    10% { opacity: 0.23; }
+    15% { opacity: 0.90; }
+    20% { opacity: 0.18; }
+    25% { opacity: 0.83; }
+    30% { opacity: 0.65; }
+    35% { opacity: 0.67; }
+    40% { opacity: 0.26; }
+    45% { opacity: 0.84; }
+    50% { opacity: 0.96; }
+    55% { opacity: 0.08; }
+    60% { opacity: 0.20; }
+    65% { opacity: 0.71; }
+    70% { opacity: 0.53; }
+    75% { opacity: 0.37; }
+    80% { opacity: 0.71; }
+    85% { opacity: 0.70; }
+    90% { opacity: 0.70; }
+    95% { opacity: 0.36; }
+    100% { opacity: 0.24; }
+  }
+
+  /* TV Menu Interface */
+  .tv-menu {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+    z-index: 5;
+    
+    /* CRT text effects */
+    animation: textShadow 1.6s infinite;
+    text-shadow: 
+      0 0 10px #00ff00,
+      2px 0 0 rgba(0, 30, 255, 0.5),
+      -2px 0 0 rgba(255, 0, 80, 0.3);
+  }
+
+  .tv-menu-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tv-menu-content {
+    text-align: center;
+    max-width: 80%;
+  }
+
+  /* TV Logo */
+  .tv-logo {
+    margin-bottom: 60px;
+  }
+
+  .tv-logo-text {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .tv-logo-line {
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    margin: 0 auto;
+    width: 300px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Game Info */
+  .tv-game-info {
+    margin-bottom: 60px;
+  }
+
+  .tv-game-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-shadow: 
+      0 0 20px #ffffff,
+      0 0 40px #00ff00;
+  }
+
+  .tv-loading {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .tv-loading-dots {
+    animation: loadingDots 1.5s infinite;
+  }
+
+  /* Status Bar */
+  .tv-status-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .tv-status-item {
+    padding: 5px 10px;
+    border: 1px solid #00ff00;
+    background: rgba(0, 255, 0, 0.1);
+  }
+
+  /* Text shadow animation for CRT effect */
+  @keyframes textShadow {
+    0% {
+      text-shadow: 
+        0.4px 0 1px rgba(0,30,255,0.5), 
+        -0.4px 0 1px rgba(255,0,80,0.3), 
+        0 0 3px #00ff00;
+    }
+    25% {
+      text-shadow: 
+        2.7px 0 1px rgba(0,30,255,0.5), 
+        -2.7px 0 1px rgba(255,0,80,0.3), 
+        0 0 3px #00ff00;
+    }
+    50% {
+      text-shadow: 
+        0.02px 0 1px rgba(0,30,255,0.5), 
+        -0.02px 0 1px rgba(255,0,80,0.3), 
+        0 0 3px #00ff00;
+    }
+    75% {
+      text-shadow: 
+        3.4px 0 1px rgba(0,30,255,0.5), 
+        -3.4px 0 1px rgba(255,0,80,0.3), 
+        0 0 3px #00ff00;
+    }
+    100% {
+      text-shadow: 
+        0.4px 0 1px rgba(0,30,255,0.5), 
+        -0.4px 0 1px rgba(255,0,80,0.3), 
+        0 0 3px #00ff00;
+    }
+  }
+
+  /* Glow animation */
+  @keyframes glow {
+    from {
+      text-shadow: 
+        0 0 20px #00ff00,
+        0 0 30px #00ff00,
+        0 0 40px #00ff00;
+    }
+    to {
+      text-shadow: 
+        0 0 30px #00ff00,
+        0 0 40px #00ff00,
+        0 0 50px #00ff00;
+    }
+  }
+
+  /* Pulse animation */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scaleX(0.95);
+    }
+  }
+
+  /* Loading dots animation */
+  @keyframes loadingDots {
+    0%, 20% {
+      content: "";
+    }
+    40% {
+      content: ".";
+    }
+    60% {
+      content: "..";
+    }
+    80%, 100% {
+      content: "...";
+    }
+  }
+
+  /* Game iframe */
+  .game-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    z-index: 1;
+  }
+
+  .game-iframe-visible {
+    opacity: 1;
+  }
+
+  /* Mobile specific adjustments */
+  @media (max-width: 768px) {
+    .crt-screen {
+      width: 95vw;
+      height: 95vh;
+      border-radius: 15px;
+      border-width: 4px;
+    }
+    
+    .tv-logo-text {
+      font-size: 2rem;
+    }
+    
+    .tv-game-title {
+      font-size: 1.5rem;
+    }
+    
+    .tv-loading {
+      font-size: 1.2rem;
+    }
+    
+    .tv-status-bar {
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .menu {
+      width: 90vw;
+      max-width: 90vw;
+      font-size: 28px;
+      padding: 8px;
+    }
+    
+    .menu header {
+      font-size: 26px;
+      padding: 8px 12px;
+      margin-bottom: 15px;
+    }
+    
+    .menu ul li {
+      font-size: 24px;
+      padding: 6px 12px;
+    }
+    
+    .menu footer .system-name {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      padding: 8px 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .menu {
+      width: 95vw;
+      max-width: 95vw;
+      font-size: 26px;
+      padding: 10px;
+    }
+    
+    .menu header {
+      font-size: 24px;
+      padding: 10px 8px;
+      margin-bottom: 12px;
+    }
+    
+    .menu ul li {
+      font-size: 22px;
+      padding: 8px 8px;
+    }
+    
+    .menu footer .system-name {
+      font-size: 18px;
+      letter-spacing: 0px;
+      padding: 10px 8px;
+    }
+  }
+
+  /* Global Button Height Standards - ALWAYS match explore and connect wallet buttons */
+  .btn-standard-height {
+    /* Desktop: py-3 (12px top + 12px bottom = 24px total padding) */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /* Mobile: py-2.5 (10px top + 10px bottom = 20px total padding) */
+  }
+
+  .btn-standard-height-mobile {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Apply standard heights to all button variants */
+  .btn-primary-gradient,
+  .btn-secondary,
+  .btn-outline,
+  button[class*="Button"],
+  .button,
+  [role="button"] {
+    /* Desktop standard height */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 48px; /* Ensures consistent clickable area */
+  }
+
+  /* Mobile responsive button heights */
+  @media (max-width: 768px) {
+    .btn-primary-gradient,
+    .btn-secondary,
+    .btn-outline,
+    button[class*="Button"],
+    .button,
+    [role="button"] {
+      /* Mobile standard height - matches explore/connect buttons */
+      padding-top: 10px;
+      padding-bottom: 10px;
+      min-height: 44px; /* Slightly smaller for mobile */
+    }
+  }
+
+  /* Force height consistency for custom button components */
+  .button-custom,
+  .btn-custom {
+    /* Always use standard heights */
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    min-height: 48px !important;
+  }
+
+  @media (max-width: 768px) {
+    .button-custom,
+    .btn-custom {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      min-height: 44px !important;
+    }
+  }
+}
+
+@layer base {
+  /* Apply heading styles to all h1-h6 elements by default */
+  h1 {
+    @apply heading-1;
+  }
+
+  h2 {
+    @apply heading-2;
+  }
+
+  h3 {
+    @apply heading-3;
+  }
+
+  h4 {
+    @apply heading-4;
+  }
+
+  h5 {
+    @apply heading-5;
+  }
+
+  h6 {
+    @apply heading-6;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Update dark mode to use the provided noise texture */
+.dark body {
+  background-color: #0a0a0a; /* Almost black background */
+  color: #f5f5f5;
+  position: relative;
+}
+
+/* Add the noise texture as a pseudo-element for better blending control */
+.dark body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/noise-texture-dark.png");
+  background-repeat: repeat;
+  background-size: 500px 500px;
+  opacity: 0.3; /* Control the intensity of the noise */
+  pointer-events: none; /* Make sure it doesn't interfere with clicks */
+  mix-blend-mode: overlay; /* Blend mode for better integration */
+  z-index: 1; /* Keep it above the background but below content */
+}
+
+/* Ensure content is above the noise layer */
+.dark main,
+.dark header,
+.dark footer {
+  position: relative;
+  z-index: 2;
+}
+
+.dark footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Grid pattern for footer background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  width: 100%;
+  height: 100%;
+}
