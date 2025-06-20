@@ -1,4 +1,4 @@
-# 🎮 BAES Entertainment System
+# 🎮 BARIO 
 
 > A modern Web3 gaming platform built with Next.js, Supabase, and blockchain integration
 
