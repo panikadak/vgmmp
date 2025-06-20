@@ -16,7 +16,7 @@ BAES (Bario Entertainment System) is a cutting-edge Web3 gaming platform that co
 
 ### 🔗 **Blockchain Integration**
 - **Sign-In with Ethereum (SIWE)** authentication
-- **Base Chain** integration via RainbowKit
+- **Base** integration via Coinbase Smart Wallets and RainbowKit
 - **Wallet-based** user management
 - **Secure** JWT token sessions
 
