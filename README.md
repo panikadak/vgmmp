@@ -169,13 +169,7 @@ We welcome contributions! Please see our [LICENSE](LICENSE) for terms.
 
 This project is licensed under a **proprietary license**. See [LICENSE](LICENSE) for details.
 
-**For commercial use**, please contact us for licensing options.
 
-## 📞 Contact
-
-- **Email**: contact@baesapp.com
-- **GitHub**: @panikadak
-- **Project**: BAES Entertainment System
 
 ## 🙏 Acknowledgments
 
